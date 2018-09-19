@@ -22,6 +22,7 @@ import java.util.Map;
  * 示例 3：
  * 输入：N = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]
  * 输出：false
+ * https://leetcode-cn.com/articles/possible-bipartition/
  */
 public class GroupLike {
 
