@@ -26,7 +26,7 @@ public class NumSquarefulPerms {
         count = new HashMap();
         graph = new HashMap();
 
-        // count.get(v) : 数组 A 中值为 v 的节点数量
+        // count.get(v) :Trhe数组 A 中值为 v 的节点数量
         for (int x : A) {
             count.put(x, count.getOrDefault(x, 0) + 1);
         }
