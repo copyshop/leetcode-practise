@@ -62,7 +62,6 @@ public class ClhSpinLock {
             }).start();
             Thread.sleep(100);
         }
-        
         System.out.println("main thread unlock!");
         lock.unlock();
     }
