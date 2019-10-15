@@ -19,7 +19,7 @@ public class FriendChain {
                 {0, 0, 1, 1, 0, 0},
                 {1, 0, 1, 0, 1, 0},
                 {0, 0, 0, 0, 0, 1}};
-        System.out.println(findCircleNum(M));
+        System.out.println(findCircleNumUnion(M));
     }
 
     /**
@@ -29,7 +29,7 @@ public class FriendChain {
      * @param visited
      * @param i
      */
-    public static void dfs(int[][] M, int[] visited, int i) {
+    private static void dfs(int[][] M, int[] visited, int i) {
         for (int j = 0; j < M.length; j++) {
             if (M[i][j] == 1 && visited[j] == 0) {
                 visited[j] = 1;
@@ -38,7 +38,7 @@ public class FriendChain {
         }
     }
 
-    public static int findCircleNum(int[][] M) {
+    private static int findCircleNum(int[][] M) {
         int[] visited = new int[M.length];
         int count = 0;
         for (int i = 0; i < M.length; i++) {
@@ -56,7 +56,7 @@ public class FriendChain {
      * @param M
      * @return
      */
-    public static int wds(int[][] M) {
+    private static int wds(int[][] M) {
         int[] visited = new int[M.length];
         int count = 0;
         Queue<Integer> queue = new LinkedList<>();
@@ -86,14 +86,14 @@ public class FriendChain {
      * @param i
      * @return
      */
-    int find(int parent[], int i) {
+    private static int find(int[] parent, int i) {
         if (parent[i] == -1) {
             return i;
         }
         return find(parent, parent[i]);
     }
 
-    void union(int parent[], int x, int y) {
+    private static void union(int[] parent, int x, int y) {
         int xset = find(parent, x);
         int yset = find(parent, y);
         if (xset != yset) {
@@ -101,7 +101,7 @@ public class FriendChain {
         }
     }
 
-    public int findCircleNumUnion(int[][] M) {
+    private static int findCircleNumUnion(int[][] M) {
         int[] parent = new int[M.length];
         Arrays.fill(parent, -1);
         for (int i = 0; i < M.length; i++) {
