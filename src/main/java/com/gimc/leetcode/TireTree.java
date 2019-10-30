@@ -12,11 +12,12 @@ public class TireTree {
 
     public static void main(String[] args) {
         Trie tries = new Trie();
-        String strs[] = {"abc", "abd", "b", "abdc"};
+        String strs[] = {"abca", "abd", "bcc", "abdc", "abc"};
 
         for (int i = 0; i < strs.length; i++) {
-            insertNode(strs[i], tries);
+            System.out.println(insertNode(strs[i], tries));
         }
+        System.out.println(tries);
     }
 
     public static boolean insertNode(String str, Trie head) {
@@ -42,6 +43,5 @@ public class TireTree {
 }
 
 class Trie {
-    boolean isTrie;
-    HashMap<Character, Trie> children = new HashMap<Character, Trie>();
+    HashMap<Character, Trie> children = new HashMap<>();
 }
