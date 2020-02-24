@@ -1,7 +1,9 @@
 package com.gimc.leetcode;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * author: heyin
@@ -18,7 +20,7 @@ public class CandySwap {
         int[] a = {1, 1};
         int[] b = {2, 2};
         int[] result = fairCandySwap(a, b);
-        System.out.println(result);
+        System.out.println(Arrays.toString(result));
     }
 
     public static int[] fairCandySwap(int[] A, int[] B) {
@@ -32,15 +34,17 @@ public class CandySwap {
         }
         int delta = (sb - sa) / 2;
         // If Alice gives x, she expects to receive x + delta
-        Set<Integer> setB = new HashSet();
+        Set<Integer> setB = new HashSet<>();
         for (int x : B) {
             setB.add(x);
         }
         for (int x : A) {
             if (setB.contains(x + delta)) {
-                return new int[] {x, x + delta};
+                return new int[]{x, x + delta};
             }
         }
-        throw null;
+        TreeSet<Integer> treeSet = new TreeSet<>();
+        treeSet.add(1);
+        return null;
     }
 }

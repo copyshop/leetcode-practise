@@ -39,7 +39,7 @@ public class RescueBoat {
      * 令 people[i] 指向当前最轻的人，而 people[j] 指向最重的那位。
      * 然后，如上所述，如果最重的人可以与最轻的人共用一条船（即 people[j] + people[i] <= limit），那么就这样做；否则，最重的人自己独自坐在船上。
      */
-    public static int numRescueBoats(int[] people, int limit) {
+    public static void numRescueBoats(int[] people, int limit) {
         Arrays.sort(people);
         int i = 0, j = people.length - 1;
         int ans = 0;
@@ -51,7 +51,6 @@ public class RescueBoat {
             }
             j--;
         }
-        return ans;
     }
 }
 

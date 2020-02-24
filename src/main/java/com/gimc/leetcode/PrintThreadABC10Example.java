@@ -13,17 +13,16 @@ import java.util.concurrent.Executors;
 public class PrintThreadABC10Example {
 
     public static void main(String[] args) {
-        PrintThreadABC10Example example = new PrintThreadABC10Example();
-        LetterPrinter letterPrinter = example.new LetterPrinter();
+        LetterPrinter letterPrinter = new LetterPrinter();
         ExecutorService service = Executors.newFixedThreadPool(3,
                 new ThreadFactoryBuilder().setNameFormat("print-thread-").build());
-        service.execute(example.new PrintRunnable(letterPrinter, 'A'));
-        service.execute(example.new PrintRunnable(letterPrinter, 'B'));
-        service.execute(example.new PrintRunnable(letterPrinter, 'C'));
+        service.execute(new PrintRunnable(letterPrinter, 'A'));
+        service.execute(new PrintRunnable(letterPrinter, 'B'));
+        service.execute(new PrintRunnable(letterPrinter, 'C'));
         service.shutdown();
     }
 
-    private class LetterPrinter {
+    private static class LetterPrinter {
         private char letter = 'A';
 
         public void print() {
@@ -56,16 +55,14 @@ public class PrintThreadABC10Example {
 
     }
 
-    private class PrintRunnable implements Runnable {
+    private static class PrintRunnable implements Runnable {
 
-        private LetterPrinter letterPrinter = null;
+        private final static Object object = new Object();
 
-        private char letter = ' ';
+        private LetterPrinter letterPrinter;
 
-        /**
-         * @param letterPrinter
-         * @param letter
-         */
+        private char letter;
+
         public PrintRunnable(LetterPrinter letterPrinter, char letter) {
             super();
             this.letterPrinter = letterPrinter;
@@ -75,7 +72,7 @@ public class PrintThreadABC10Example {
         @Override
         public void run() {
             for (int i = 0; i < 10; i++) {
-                synchronized (letterPrinter) {
+                synchronized (object) {
                     while (letter != letterPrinter.getLetter()) {
                         try {
                             letterPrinter.wait();
