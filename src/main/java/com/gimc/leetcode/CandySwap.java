@@ -43,8 +43,6 @@ public class CandySwap {
                 return new int[]{x, x + delta};
             }
         }
-        TreeSet<Integer> treeSet = new TreeSet<>();
-        treeSet.add(1);
         return null;
     }
 }
