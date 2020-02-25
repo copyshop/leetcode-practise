@@ -6,20 +6,24 @@ package com.gimc.leetcode;
  * desc: 翻转链表:https://leetcode-cn.com/articles/reverse-linked-list/
  */
 public class ReverseList {
-    
+
     public static void main(String[] args) {
         new ReverseList().exe();
     }
-    
+
+    /**
+     * 测试使用
+     */
     public void exe() {
         ListNode listNode4 = new ListNode(4, null);
         ListNode listNode3 = new ListNode(3, listNode4);
         ListNode listNode2 = new ListNode(2, listNode3);
         ListNode listNode1 = new ListNode(1, listNode2);
-        
-        reverseList2(listNode1);
+
+        ListNode result = reverseList2(listNode1);
+        System.out.println(result);
     }
-    
+
     public ListNode reverseList1(ListNode head) {
         ListNode result = null;
         ListNode curr = head;
@@ -31,7 +35,7 @@ public class ReverseList {
         }
         return result;
     }
-    
+
     public ListNode reverseList2(ListNode head) {
         if (head == null || head.next == null) {
             return head;
@@ -41,16 +45,16 @@ public class ReverseList {
         head.next = null;
         return p;
     }
-    
-    class ListNode {
+
+    static class ListNode {
         int val;
         ListNode next;
-        
+
         public ListNode(int val, ListNode next) {
             this.val = val;
             this.next = next;
         }
-    
+
         @Override
         public String toString() {
             return "ListNode{" + "val=" + val + ", next=" + next + '}';
