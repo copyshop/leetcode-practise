@@ -24,8 +24,8 @@ public class AllSort {
         }
         System.out.println();
         for (int i = 0; i < source.size(); i++) {
-            List<String> newSource = new ArrayList(source);
-            List<String> newTarget = new ArrayList(target);
+            List<String> newSource = new ArrayList<>(source);
+            List<String> newTarget = new ArrayList<>(target);
             newTarget.add(newSource.get(i));
             newSource.remove(i);
             sort(newSource, newTarget);
