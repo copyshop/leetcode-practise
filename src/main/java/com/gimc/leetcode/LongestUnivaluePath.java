@@ -5,7 +5,7 @@ import sun.reflect.generics.tree.Tree;
 /**
  * author: heyin
  * date: 2019-05-23
- * desc:
+ * desc: 最长相同路径
  */
 public class LongestUnivaluePath {
 
