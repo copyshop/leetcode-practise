@@ -15,7 +15,7 @@ public class PrintThreadABC10Example {
     public static void main(String[] args) {
         LetterPrinter letterPrinter = new LetterPrinter();
         ExecutorService service = Executors.newFixedThreadPool(3,
-                new ThreadFactoryBuilder().setNameFormat("print-thread-").build());
+                new ThreadFactoryBuilder().setNameFormat("print-thread-%d").build());
         service.execute(new PrintRunnable(letterPrinter, 'A'));
         service.execute(new PrintRunnable(letterPrinter, 'B'));
         service.execute(new PrintRunnable(letterPrinter, 'C'));
@@ -59,7 +59,7 @@ public class PrintThreadABC10Example {
 
         private final static Object object = new Object();
 
-        private LetterPrinter letterPrinter;
+        private final LetterPrinter letterPrinter;
 
         private char letter;
 
@@ -72,7 +72,7 @@ public class PrintThreadABC10Example {
         @Override
         public void run() {
             for (int i = 0; i < 10; i++) {
-                synchronized (object) {
+                synchronized (letterPrinter) {
                     while (letter != letterPrinter.getLetter()) {
                         try {
                             letterPrinter.wait();
@@ -83,7 +83,6 @@ public class PrintThreadABC10Example {
                     letterPrinter.print();
                     letterPrinter.nextLetter();
                     letterPrinter.notifyAll();
-
                 }
             }
         }

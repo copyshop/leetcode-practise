@@ -8,15 +8,15 @@ import sun.reflect.generics.tree.Tree;
  * desc:
  */
 public class LongestUnivaluePath {
-    
+
     int ans;
-    
+
     public int longestUnivaluePath(TreeNode root) {
         ans = 0;
         arrowLength(root);
         return ans;
     }
-    
+
     public int arrowLength(TreeNode node) {
         if (node == null) {
             return 0;
@@ -33,13 +33,13 @@ public class LongestUnivaluePath {
         ans = Math.max(ans, arrowLeft + arrowRight);
         return Math.max(arrowLeft, arrowRight);
     }
-    
-    class TreeNode {
-        
+
+    static class TreeNode {
+
         int val;
-        
+
         TreeNode left;
-        
+
         TreeNode right;
     }
 }
